@@ -53,6 +53,7 @@ public class CalculadoraGUI extends javax.swing.JFrame {
 
         btnEvaluar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEvaluar.setText("Evaluar");
+        btnEvaluar.addActionListener(this::btnEvaluarActionPerformed);
 
         lblResultado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblResultado.setText("jLabel4");
@@ -115,6 +116,29 @@ public class CalculadoraGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarActionPerformed
+        // TODO add your handling code here:
+        try{
+            //Capturar los datos
+            String nombre = txtNombre.getText().trim();
+            double nota1 = Double.parseDouble(txtNota1.getText());
+            double nota2 = Double.parseDouble(txtNota2.getText());
+            //Instanciar el objecto
+            Modelo.Estudiante estudiante = new Modelo.Estudiante(nombre, nota1, nota2);
+            //Pedirle al objeto que trabaje y actualice la interfaz
+            String mensaje = String.format("Estudiante %s | Definitiva: %.2f(%s)",
+                estudiante.getNombre(),
+                estudiante.calcularDefinitiva(), 
+                estudiante.obtenerEstado());
+            lblResultado.setText(mensaje);
+        }catch(NumberFormatException e){
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                    "Por favor ingresa valores numericos validos", 
+                    "Error de formato",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEvaluarActionPerformed
 
     /**
      * @param args the command line arguments
