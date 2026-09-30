@@ -43,5 +43,9 @@ public class Estudiante {
         this.nota2 = nota2;
     }
     
+    public Double calcularDefinitiva(){
+        return (nota1+nota2)/2.0;
+    }
+    
     
 }
