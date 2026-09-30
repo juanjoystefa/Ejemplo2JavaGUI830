@@ -10,8 +10,9 @@ package Modelo;
  */
 public class Estudiante {
     private String nombre;
-    private Double nota1;
-    private Double nota2;
+    private double nota1;
+    private double nota2;
+    private double resultado;
 
     public Estudiante(String nombre, Double nota1, Double nota2) {
         this.nombre = nombre;
@@ -27,25 +28,34 @@ public class Estudiante {
         this.nombre = nombre;
     }
 
-    public Double getNota1() {
+    public double getNota1() {
         return nota1;
     }
 
-    public void setNota1(Double nota1) {
+    public void setNota1(double nota1) {
         this.nota1 = nota1;
     }
 
-    public Double getNota2() {
+    public double getNota2() {
         return nota2;
     }
 
-    public void setNota2(Double nota2) {
+    public void setNota2(double nota2) {
         this.nota2 = nota2;
     }
     
-    public Double calcularDefinitiva(){
-        return (nota1+nota2)/2.0;
+    public double calcularDefinitiva(){
+        resultado = (nota1+nota2)/2.0;
+        return resultado;
     }
     
-    
+    public String obtenerEstado(){
+        if (resultado >= 3.0){
+            String estado = "Aprobado";
+            return estado;
+        } else{
+            String estado = "No aprobado";
+            return estado;
+        }
+    }
 }
